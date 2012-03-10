@@ -14,34 +14,34 @@ Maybe sometimes I'll add 1.8.x support through iconv library, but for now 1.8.x 
 
 Add this line to your application's Gemfile:
 
-  gem 'encoding_checker'
+    gem 'encoding_checker'
 
 And then execute:
 
-  $ bundle
+    $ bundle
 
 Or install it yourself as:
 
-  $ gem install encoding_checker
+    $ gem install encoding_checker
 
 ## Usage
 
-  # instantiate checker with encoding name
-  checker = EncodingChecker.new("utf-8")
-  # check any particular text
-  result = checker.check("some string with wrong\xA0symbol")
+    # instantiate checker with encoding name
+    checker = EncodingChecker.new("utf-8")
+    # check any particular text
+    result = checker.check("some string with wrong\xA0symbol")
 
-  unless result.empty?
-    result.invalid_lines.each do |line|
-      # use line.content, line.index and line.invalid_characters
-      line.invalid_characters.each do |character|
-        # use character.content and character.index
+    unless result.empty?
+      result.invalid_lines.each do |line|
+        # use line.content, line.index and line.invalid_characters
+        line.invalid_characters.each do |character|
+          # use character.content and character.index
+        end
       end
     end
-  end
 
-  # raises EncodingChecker::Error
-  checker.check!("some string with wrong\xA0symbol")
+    # raises EncodingChecker::Error
+    checker.check!("some string with wrong\xA0symbol")
 
 Read the specs for more information.
 
