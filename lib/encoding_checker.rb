@@ -50,7 +50,7 @@ class EncodingChecker
 
   class LineMatch < Struct.new(:index, :content, :invalid_characters)
     def to_s
-      %(#{index}: "#{content}")
+      %(#{index}: "#{content.force_encoding('utf-8')}")
     end
   end
 

@@ -2,11 +2,24 @@
 require 'spec_helper'
 
 describe EncodingChecker do
-  let(:checker) { EncodingChecker.new("utf-8") }
+  let(:encoding) { 'utf-8' }
+  let(:checker) { EncodingChecker.new(encoding) }
   let(:valid_string) { "some string with only_right symbols" }
   let(:invalid_symbol) { "\xA0" }
   let(:invalid_string) { "some string with wrong#{invalid_symbol}symbol" }
   let(:invalid_text) { [valid_string, invalid_string].join("\n") }
+
+  describe 'utf-16' do
+    let(:encoding) { 'utf-16le' }
+
+    it "doesn't raise error when making error message" do
+      begin
+        checker.check!(File.read('spec/fixture.dat'))
+      rescue => e
+        expect { e.to_s }.not_to raise_error
+      end
+    end
+  end
 
   describe '#check(string)' do
     it 'returns result which contains invalid lines and characters in them' do
