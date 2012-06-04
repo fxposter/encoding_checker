@@ -22,7 +22,8 @@ class EncodingChecker
             line_errors << CharacterMatch.new(index, char)
           end
         end
-        errors << LineMatch.new(line_index, line.force_encoding('utf-8').strip, line_errors)
+        stripped_line = line.force_encoding('utf-8').strip rescue line
+        errors << LineMatch.new(line_index, stripped_line, line_errors)
       end
     end
     Match.new(@encoding, errors)
