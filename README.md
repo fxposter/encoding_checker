@@ -1,6 +1,6 @@
 # EncodingChecker
 
-[![Build Status](https://secure.travis-ci.org/fxposter/encoding_checker.png?branch=master)](http://travis-ci.org/fxposter/encoding_checker)
+[![Build Status](https://secure.travis-ci.org/fxposter/encoding_checker.png)](http://travis-ci.org/fxposter/encoding_checker)
 
 When you need to parse some text files - you need to be sure, that they are in some particular encoding
 before actually parsing them. For example, some symbols are invalid for UTF-8 encoding, but nevertheless
